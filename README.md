@@ -10,7 +10,6 @@ A simple **3D Renderer in Java** built from scratch using **weak perspective pro
 
 ### **1️⃣ Weak Perspective Projection**
 The renderer uses **weak perspective projection**, which simplifies full **3D perspective projection**.
-The **projection formula** is:
 
 $$
 x' = \frac{f \cdot x}{z_{\text{avg}}}, \quad y' = \frac{f \cdot y}{z_{\text{avg}}}
