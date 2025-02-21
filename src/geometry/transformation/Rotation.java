@@ -16,21 +16,29 @@ public class Rotation {
         angleY += angle;
     }
 
-    public Vertex rotateVertex(Vertex vertex) {
-        Vertex rotated = rotateX(vertex, angleX);
+    public Vertex rotateVertex(Vertex v) {
+        Vertex rotated = rotateX(v, angleX);
         rotated = rotateY(rotated, angleY);
         return rotated;
     }
 
-    private Vertex rotateX(Vertex vertex, double angle) {
-        double y = vertex.y * Math.cos(angle) - vertex.z * Math.sin(angle);
-        double z = vertex.y * Math.sin(angle) + vertex.z * Math.cos(angle);
-        return new Vertex(vertex.x, y, z);
+    private Vertex rotateX(Vertex v, double angle) {
+        double sin = Math.sin(angle);
+        double cos = Math.cos(angle);
+
+        double y = v.y * cos - v.z * sin;
+        double z = v.y * sin + v.z * cos;
+
+        return new Vertex(v.x, y, z);
     }
 
-    private Vertex rotateY(Vertex vertex, double angle) {
-        double x = vertex.x * Math.cos(angle) + vertex.z * Math.sin(angle);
-        double z = -vertex.x * Math.sin(angle) + vertex.z * Math.cos(angle);
-        return new Vertex(x, vertex.y, z);
+    private Vertex rotateY(Vertex v, double angle) {
+        double sin = Math.sin(angle);
+        double cos = Math.cos(angle);
+
+        double x = v.x * cos + v.z * sin;
+        double z = -v.x * sin + v.z * cos;
+
+        return new Vertex(x, v.y, z);
     }
 }
